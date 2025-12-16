@@ -13,8 +13,8 @@
     <!-- Login Section -->
     <div id="loginOverlay" class="login-overlay">
         <div class="login-box">
-            <h2>Login</h2>
-            <p class="login-hint">Enter your credentials</p>
+            <h2 id="authTitle">Login</h2>
+            <p class="login-hint" id="authHint">Enter your credentials</p>
             <form id="loginForm">
                 <div class="form-group">
                     <label>Username</label>
@@ -24,10 +24,24 @@
                     <label>Password</label>
                     <input type="password" id="password" placeholder="admin123" required>
                 </div>
+                <!-- Extra field for sign up (hidden by default) -->
+                <div class="form-group" id="confirmPassGroup" style="display: none;">
+                    <label>Confirm Password</label>
+                    <input type="password" id="confirmPassword" placeholder="Confirm Password">
+                </div>
+
                 <div id="loginError" class="error-msg"></div>
-                <button type="submit" class="login-btn">Sign In</button>
+                <button type="submit" class="login-btn" id="authBtn">Sign In</button>
             </form>
-            <p style="margin-top: 1rem; font-size: 0.8rem; color: #666;">(Default: admin / admin123)</p>
+
+            <p style="margin-top: 1rem; font-size: 0.9rem;">
+                <span id="toggleText">Don't have an account?</span>
+                <button id="toggleAuthBtn"
+                    style="color: var(--primary); font-weight: 600; text-decoration: underline; cursor: pointer;">Sign
+                    Up</button>
+            </p>
+            <p style="margin-top: 0.5rem; font-size: 0.8rem; color: #666;" id="defaultCreds">(Default: admin / admin123)
+            </p>
         </div>
     </div>
 
@@ -98,9 +112,46 @@
                         <span id="cartTotal">$0.00</span>
                     </div>
                 </div>
-                <button class="checkout-btn">Checkout</button>
+                <button class="checkout-btn" id="checkoutBtn">Checkout</button>
             </div>
         </aside>
+    </div>
+
+    <!-- Checkout Modal -->
+    <div id="checkoutModal" class="login-overlay" style="display: none; z-index: 300;">
+        <div class="login-box" style="max-width: 400px; text-align: left;">
+            <h2 style="text-align: center; margin-bottom: 1rem;">Checkout 💳</h2>
+            <form id="checkoutForm">
+                <div class="form-group">
+                    <label>Full Name</label>
+                    <input type="text" required placeholder="John Doe">
+                </div>
+                <div class="form-group">
+                    <label>Shipping Address</label>
+                    <input type="text" required placeholder="123 Wellness St">
+                </div>
+                <div class="form-group">
+                    <label>Card Number (Mock)</label>
+                    <input type="text" required placeholder="0000 0000 0000 0000" maxlength="19">
+                </div>
+                <div style="display: flex; gap: 1rem;">
+                    <div class="form-group" style="flex: 1;">
+                        <label>Expiry</label>
+                        <input type="text" required placeholder="MM/YY">
+                    </div>
+                    <div class="form-group" style="flex: 1;">
+                        <label>CVV</label>
+                        <input type="text" required placeholder="123" maxlength="3">
+                    </div>
+                </div>
+                <div style="display: flex; gap: 1rem; margin-top: 1rem;">
+                    <button type="button" onclick="closeCheckout()"
+                        style="flex: 1; padding: 0.75rem; border: 1px solid #ccc; background: white; border-radius: 4px; cursor: pointer;">Cancel</button>
+                    <button type="submit" id="confirmPayBtn" class="login-btn" style="flex: 1; background: #28a745;">Pay
+                        Now</button>
+                </div>
+            </form>
+        </div>
     </div>
 
     <script src="users.js"></script>
