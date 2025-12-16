@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PharmaSwift</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <!-- Login Section -->
+    <div id="loginOverlay" class="login-overlay">
+        <div class="login-box">
+            <h2>Login</h2>
+            <p class="login-hint">Enter your credentials</p>
+            <form id="loginForm">
+                <div class="form-group">
+                    <label>Username</label>
+                    <input type="text" id="username" placeholder="admin" required>
+                </div>
+                <div class="form-group">
+                    <label>Password</label>
+                    <input type="password" id="password" placeholder="admin123" required>
+                </div>
+                <div id="loginError" class="error-msg"></div>
+                <button type="submit" class="login-btn">Sign In</button>
+            </form>
+            <p style="margin-top: 1rem; font-size: 0.8rem; color: #666;">(Default: admin / admin123)</p>
+        </div>
+    </div>
+
+    <!-- Main App (Hidden by default) -->
+    <div id="appContainer" class="app-container" style="display: none;">
+        <!-- Navigation -->
+        <nav class="navbar">
+            <div class="nav-content">
+                <a href="#" class="brand">
+                    <span>💊 PharmaSwift</span>
+                </a>
+
+                <div class="nav-actions">
+                    <div class="search-bar">
+                        <span>🔍</span>
+                        <input type="text" placeholder="Search..." id="searchInput">
+                    </div>
+
+                    <button class="cart-btn" id="cartBtn">
+                        <span class="icon-text">🛒 Cart</span>
+                        <span class="cart-badge" id="cartCount">0</span>
+                    </button>
+                </div>
+            </div>
+        </nav>
+
+        <!-- Hero Section -->
+        <header class="hero">
+            <div class="hero-content">
+                <span class="hero-tag">Trusted Healthcare</span>
+                <h1>Your Pharmacy, Delivered.</h1>
+                <p>Fast. Reliable. Genuine.</p>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content">
+            <div class="section-header">
+                <h2>Essentials</h2>
+                <div class="filters">
+                    <button class="filter-chip active" data-category="all">All</button>
+                    <button class="filter-chip" data-category="pain">Pain Relief</button>
+                    <button class="filter-chip" data-category="wellness">Wellness</button>
+                </div>
+            </div>
+
+            <div class="product-grid" id="productGrid">
+                <!-- Products injected by JS -->
+            </div>
+        </main>
+
+        <!-- Cart Sidebar -->
+        <div class="cart-overlay" id="cartOverlay"></div>
+        <aside class="cart-sidebar" id="cartSidebar">
+            <div class="cart-header">
+                <h3>Your Bag</h3>
+                <button class="close-cart" id="closeCartBtn">✕ Close</button>
+            </div>
+
+            <div class="cart-items" id="cartItems">
+                <!-- Cart items -->
+            </div>
+
+            <div class="cart-footer">
+                <div class="cart-summary">
+                    <div class="summary-row">
+                        <span>Total</span>
+                        <span id="cartTotal">$0.00</span>
+                    </div>
+                </div>
+                <button class="checkout-btn">Checkout</button>
+            </div>
+        </aside>
+    </div>
+
+    <script src="users.js"></script>
+    <script src="app.js"></script>
+</body>
+
+</html>
